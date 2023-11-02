@@ -16,6 +16,14 @@ func InitRoutes(h *handlers.Handler) *mux.Router {
 	r.HandleFunc("/me", h.Me).Methods(http.MethodGet)
 	r.HandleFunc("/logout", h.Logout).Methods(http.MethodGet)
 	r.HandleFunc("/users-list", h.GetUsersList).Methods(http.MethodGet)
+	//--
+	//--
+	//--
+	// Новое
+	r.HandleFunc("/get-chats", h.GetChat).Methods(http.MethodGet)
+	r.HandleFunc("/create-chat", h.CreateChat).Methods(http.MethodGet)
+	r.HandleFunc("/edit-chat", h.EditChat).Methods(http.MethodGet)
+	r.HandleFunc("/message", h.Message).Methods(http.MethodGet)
 
 	return r
 }

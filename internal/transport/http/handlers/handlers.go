@@ -177,6 +177,59 @@ func (h *Handler) GetUsersList(w http.ResponseWriter, r *http.Request) {
 	w.Write(data)
 }
 
+// --
+// --
+// --
+// --
+// Новое
+// --
+func (h *Handler) GetChat(w http.ResponseWriter, r *http.Request) {
+
+	tmpl, err := template.ParseFiles("./internal/templates/start.html")
+	if err != nil {
+		h.log.Error().Err(err).Msg("filed to show home page")
+		w.WriteHeader(http.StatusInternalServerError)
+		return
+	}
+	tmpl.Execute(w, nil)
+}
+
+// --
+func (h *Handler) CreateChat(w http.ResponseWriter, r *http.Request) {
+
+	tmpl, err := template.ParseFiles("./internal/templates/createChat.html")
+	if err != nil {
+		h.log.Error().Err(err).Msg("filed to show home page")
+		w.WriteHeader(http.StatusInternalServerError)
+		return
+	}
+	tmpl.Execute(w, nil)
+}
+
+// --
+func (h *Handler) EditChat(w http.ResponseWriter, r *http.Request) {
+
+	tmpl, err := template.ParseFiles("./internal/templates/editChat.html")
+	if err != nil {
+		h.log.Error().Err(err).Msg("filed to show home page")
+		w.WriteHeader(http.StatusInternalServerError)
+		return
+	}
+	tmpl.Execute(w, nil)
+}
+
+// --
+func (h *Handler) Message(w http.ResponseWriter, r *http.Request) {
+
+	tmpl, err := template.ParseFiles("./internal/templates/messages.html")
+	if err != nil {
+		h.log.Error().Err(err).Msg("filed to show home page")
+		w.WriteHeader(http.StatusInternalServerError)
+		return
+	}
+	tmpl.Execute(w, nil)
+}
+
 func New(log zerolog.Logger, oauthConfig *oauth2.Config, service Service) *Handler {
 	return &Handler{
 		log:         log,
